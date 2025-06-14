@@ -1,11 +1,12 @@
 # Bee Swarm Smart Notifier
 
 ## Overview
-Bee Swarm Smart Notifier is a Python-based application designed to monitor in-game events and item drops in the Roblox game *Bee Swarm Simulator*. It uses Optical Character Recognition (OCR) via Tesseract to detect specific events and items on the screen and sends real-time notifications to Discord via webhooks. The application features a customizable GUI built with Tkinter, allowing users to configure detection settings, manage notifications, and toggle themes. **This tool complies with Roblox's Terms of Service (ToS)** as it only reads screen data and does not modify or automate gameplay.
+Bee Swarm Smart Notifier is a Python-based application designed to monitor in-game events and item drops in the Roblox game *Bee Swarm Simulator*. It uses Optical Character Recognition (OCR) via Tesseract to detect specific events and items on the screen and sends real-time notifications to Discord via webhooks. The application features a customizable GUI built with Tkinter, allowing users to configure detection settings, manage notifications, and toggle themes. **This tool complies with Roblox's Terms of Service (ToS)** as it only reads screen data and does not modify or automate gameplay. It can be used alongside tools like Natro Macro, provided both are configured to operate without conflicts, as they serve different purposes (Natro Macro automates gameplay, while this tool passively monitors events and items).
 
 ## Important Notes
 - **Executable Warning**: Do not convert this script to an `.exe` file, as Windows Defender or other antivirus software may flag it as a virus, preventing downloads or execution. Run the script directly using Python for safe operation.
 - **Screen Size Adjustment**: The OCR captures a specific region of the screen (bottom-right corner, coordinates: 1300, 675, 1820, 1080) defined on **line 488** in the `detection_loop` method. If you have a larger or non-standard screen resolution (e.g., 4K), you may need to manually adjust these coordinates to ensure the OCR targets the correct area where game text appears.
+- **Compatibility with Natro Macro**: This tool can run simultaneously with Natro Macro, as it only performs passive screen monitoring via OCR and does not interfere with gameplay automation. Ensure both tools are configured properly (e.g., avoid overlapping hotkeys) to prevent conflicts.
 - **Prerequisites**: You must install Python, Visual Studio Code (VSCode), Tesseract OCR, and specific Python packages before running the application.
 
 ## Installation Instructions
@@ -50,6 +51,7 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
 - Open the script in VSCode for editing or running.
 - Update the Tesseract path in the script if necessary (line 13).
 - **Adjust OCR Coordinates (if needed)**: On **line 488** in the `detection_loop` method, the script uses `ImageGrab.grab(bbox=(1300, 675, 1820, 1080))` to capture the bottom-right corner of the screen. If the game text appears elsewhere (e.g., due to a larger monitor), modify these coordinates to match the area where *Bee Swarm Simulator* displays event and item text. You can test coordinates by taking a screenshot and checking pixel values with an image editor.
+- **Configure Hotkeys for Natro Macro Compatibility**: If using Natro Macro, ensure the hotkeys for starting/stopping detection (default: F7 and F8) do not conflict with Natro Macro’s hotkeys. Adjust them in the script’s settings tab or on lines 39–40 in the `config` dictionary.
 
 ### 6. Run the Application
 - In VSCode, open a terminal (Terminal > New Terminal) and navigate to the folder containing the script:
@@ -60,7 +62,7 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
   ```
   python bee_swarm_notifier.py
   ```
-- The GUI will open, allowing you to configure webhooks, events, items, and settings.
+- The GUI will open, allowing you to configure webhooks, events, items, and settings. You can run Natro Macro simultaneously, as the notifier passively monitors the screen without affecting macro operations.
 
 ## Features
 - **Real-time OCR Detection**: Monitors a specific screen region for game events and item drops using Tesseract OCR.
@@ -78,9 +80,10 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
 - **Module Not Found**: Verify all Python packages are installed using the `pip` commands above.
 - **Permission Issues**: If the `keyboard` module requires admin privileges, run VSCode or your terminal as an administrator.
 - **Antivirus Blocking**: If your antivirus flags the script, ensure you’re running it as a `.py` file and not an `.exe`. Add an exception to your antivirus if needed.
+- **Conflicts with Natro Macro**: If issues arise when running both tools, check for hotkey conflicts or ensure both are targeting the correct screen areas. Adjust hotkeys in the settings tab or script if needed.
 
 ## Notes
-- Always ensure compliance with Roblox’s ToS when using this tool. It is designed to be a passive monitoring tool and does not interact with the game directly.
+- Always ensure compliance with Roblox’s ToS when using this tool or Natro Macro. This notifier is designed to be a passive monitoring tool and does not interact with the game directly, making it compatible with Natro Macro’s automation.
 - For further assistance, refer to the script’s credits tab or check the Tesseract and Python package documentation.
 
 *Last updated: June 14, 2025*
