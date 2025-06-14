@@ -1,4 +1,4 @@
-# Bee Swarm Smart Notifier
+# Bee Swarm Smart Notifier (BSSN)
 
 ## Overview
 Bee Swarm Smart Notifier is a Python-based application designed to monitor in-game events and item drops in the Roblox game *Bee Swarm Simulator*. It uses Optical Character Recognition (OCR) via Tesseract to detect specific events and items on the screen and sends real-time notifications to Discord via webhooks. The application features a customizable GUI built with Tkinter, allowing users to configure detection settings, manage notifications, and toggle themes. **This tool complies with Roblox's Terms of Service (ToS)** as it only reads screen data and does not modify or automate gameplay. It can be used alongside tools like Natro Macro, provided both are configured to operate without conflicts, as they serve different purposes (Natro Macro automates gameplay, while this tool passively monitors events and items).
