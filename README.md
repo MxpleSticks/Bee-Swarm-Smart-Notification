@@ -5,7 +5,8 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
 
 ## Important Notes
 - **Executable Warning**: Do not convert this script to an `.exe` file, as Windows Defender or other antivirus software may flag it as a virus, preventing downloads or execution. Run the script directly using Python for safe operation.
-- **Prerequisites**: You must install Python and Visual Studio Code (VSCode) before setting up the application. Additionally, Tesseract OCR and specific Python packages are required.
+- **Screen Size Adjustment**: The OCR captures a specific region of the screen (bottom-right corner, coordinates: 1300, 675, 1820, 1080) defined on **line 488** in the `detection_loop` method. If you have a larger or non-standard screen resolution (e.g., 4K), you may need to manually adjust these coordinates to ensure the OCR targets the correct area where game text appears.
+- **Prerequisites**: You must install Python, Visual Studio Code (VSCode), Tesseract OCR, and specific Python packages before running the application.
 
 ## Installation Instructions
 
@@ -23,7 +24,7 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
 
 ### 3. Install Tesseract OCR
 - Download and install Tesseract OCR from [https://github.com/UB-Mannheim/tesseract/wiki](https://github.com/UB-Mannheim/tesseract/wiki). Follow the installation instructions for your operating system (Windows, macOS, or Linux).
-- For Windows users, ensure Tesseract is added to your system PATH or specify its path in the script (e.g., `pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'`).
+- For Windows users, ensure Tesseract is added to your system PATH or specify its path in the script (e.g., `pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'` on line 13).
 - Verify Tesseract installation by running:
   ```
   tesseract --version
@@ -47,7 +48,8 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
 ### 5. Set Up the Script
 - Save the provided Python script (e.g., `bee_swarm_notifier.py`) in a folder.
 - Open the script in VSCode for editing or running.
-- Update the Tesseract path in the script if necessary (see the `pytesseract.pytesseract.tesseract_cmd` line).
+- Update the Tesseract path in the script if necessary (line 13).
+- **Adjust OCR Coordinates (if needed)**: On **line 488** in the `detection_loop` method, the script uses `ImageGrab.grab(bbox=(1300, 675, 1820, 1080))` to capture the bottom-right corner of the screen. If the game text appears elsewhere (e.g., due to a larger monitor), modify these coordinates to match the area where *Bee Swarm Simulator* displays event and item text. You can test coordinates by taking a screenshot and checking pixel values with an image editor.
 
 ### 6. Run the Application
 - In VSCode, open a terminal (Terminal > New Terminal) and navigate to the folder containing the script:
@@ -61,7 +63,7 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
 - The GUI will open, allowing you to configure webhooks, events, items, and settings.
 
 ## Features
-- **Real-time OCR Detection**: Monitors the screen for specific game events and item drops using Tesseract OCR.
+- **Real-time OCR Detection**: Monitors a specific screen region for game events and item drops using Tesseract OCR.
 - **Discord Webhook Integration**: Sends notifications for detected events and items to specified Discord channels.
 - **Customizable Notifications**: Supports different notification modes for items (Off, Silent, Notify).
 - **Event Monitoring**: Detects key in-game events like Puffshroom spawns, Meteor Showers, and more.
@@ -71,7 +73,8 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
 - **Persistent Configuration**: Saves user settings to a JSON file for easy reuse.
 
 ## Troubleshooting
-- **Tesseract Not Found**: Ensure Tesseract is installed and its path is correctly set in the script or system PATH.
+- **OCR Missing Text**: If events or items aren’t detected, verify the `bbox` coordinates on **line 488** match the game’s text display area. Adjust them based on your screen resolution.
+- **Tesseract Not Found**: Ensure Tesseract is installed and its path is correctly set on line 13 or in the system PATH.
 - **Module Not Found**: Verify all Python packages are installed using the `pip` commands above.
 - **Permission Issues**: If the `keyboard` module requires admin privileges, run VSCode or your terminal as an administrator.
 - **Antivirus Blocking**: If your antivirus flags the script, ensure you’re running it as a `.py` file and not an `.exe`. Add an exception to your antivirus if needed.
