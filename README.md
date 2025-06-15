@@ -86,4 +86,4 @@ Bee Swarm Smart Notifier is a Python-based application designed to monitor in-ga
 - Always ensure compliance with Roblox’s ToS when using this tool or Natro Macro. This notifier is designed to be a passive monitoring tool and does not interact with the game directly, making it compatible with Natro Macro’s automation.
 - For further assistance, refer to the script’s credits tab or check the Tesseract and Python package documentation.
 
-*Last updated: June 14, 2025*
+*Last updated: V1.0*
